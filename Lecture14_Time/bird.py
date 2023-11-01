@@ -13,13 +13,16 @@ FRAMES_PER_TIME = ACTION_PER_TIME * FRAMES_PER_ACTION
 from pico2d import*
 import game_world
 import game_framework
+import random
 
 class Bird:
     def __init__(self):
-        self.x, self.y = 400, 300
-        self.frame = 0
+        self.x, self.y = random.randint(0, 1600), random.randint(300, 400)
+        self.frame = random.randint(0, 4)
         self.action = 2
-        self.dir = 1
+        self.dir = random.randint(-1, 1)
+        if self.dir == 0:
+            self.dir = 1
         self.image = load_image('bird_animation.png')
 
     def update(self):
